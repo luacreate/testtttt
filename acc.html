@@ -10,17 +10,17 @@
     :root{--accent1:#00e3ff;--accent2:#7d4dff;--accent3:#01ffb6;--bg1:#08111d;--bg2:#101e34}
     body{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;font-family:'Inter',sans-serif;color:#fff;background:linear-gradient(120deg,var(--bg1),var(--bg2));background-size:400% 400%;animation:bgShift 30s ease-in-out infinite;overflow:hidden;padding-top:32px;text-align:center;position:relative}
     @keyframes bgShift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    body::before, body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
-    body::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400' fill='none' stroke='%2300e3ff33' stroke-width='1'%3E%3Cg stroke-linecap='round'%3E%3Ccircle cx='200' cy='200' r='198'/%3E%3Ccircle cx='200' cy='200' r='132'/%3E%3Ccircle cx='200' cy='200' r='66'/%3E%3Cpolyline points='200,2 266,68 332,134 398,200 332,266 266,332 200,398 134,332 68,266 2,200 68,134 134,68 200,2'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;opacity:.06;transform:scale(1.15)}
-    body::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay}
+    body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
+    body::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' fill='none' stroke='%2300e3ff33'%3E%3Cg stroke-linecap='round'%3E%3Ccircle cx='200' cy='200' r='198'/%3E%3Ccircle cx='200' cy='200' r='132'/%3E%3Ccircle cx='200' cy='200' r='66'/%3E%3Cpolyline points='200,2 266,68 332,134 398,200'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;opacity:.06;transform:scale(1.15)}
+    body::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay}
 
-    /* Language switcher */
-    .lang-switch{display:flex;gap:12px;position:absolute;top:16px;right:16px;z-index:1}
+    /* LANGUAGE SWITCHER */
+    .lang-switch{display:flex;gap:12px;position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:1}
     .lang-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,0.1);border:none;border-radius:20px;color:#fff;cursor:pointer;font-size:.9rem}
     .lang-btn img{width:20px;height:20px;border-radius:50%}
 
     .app-header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-    .app-header img{width:48px;height:48px;border-radius:12px}
+    .app-header img{width:48px;height:48px;border-radius:12px;object-fit:cover}
     .app-header h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,5vw,2rem);letter-spacing:.8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
     .card{position:relative;width:92%;max-width:460px;padding:32px 24px;background:rgba(8,17,29,.82);backdrop-filter:blur(14px);border-radius:24px;text-align:left;margin:0 auto}
@@ -33,17 +33,14 @@
     .info-btn{margin-left:8px;padding:2px 6px;font-size:.75rem;font-weight:600;border:none;border-radius:6px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:none}
     .info-btn:hover{opacity:.85}
 
-    .start-btn{display:block;margin:28px auto 0;padding:14px 32px;font-size:1rem;font-weight:600;color:#fff;border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 4px 18px rgba(0,227,255,.22);transition:transform .22s;width:92%;max-width:460px}
+    .start-btn{display:block;margin:28px auto 64px;padding:14px 32px;font-size:1rem;font-weight:600;color:#fff;border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 4px 18px rgba(0,227,255,.22);transition:transform .22s;width:92%;max-width:460px}
     .start-btn:hover{transform:translateY(-3px)}
 
     @media(max-width:500px){.app-header img{width:42px;height:42px}}    
+    @media(max-width:360px){.app-header img{width:36px;height:36px}}    
   </style>
 </head>
 <body>
-  <div class="lang-switch">
-    <button class="lang-btn" data-lang="en"><img src="en.png" alt="EN">English</button>
-    <button class="lang-btn" data-lang="ru"><img src="rus.png" alt="RU">Русский</button>
-  </div>
   <header class="app-header">
     <img src="logo_ai.png" alt="logo">
     <h1>RED SOFT AI</h1>
@@ -62,86 +59,24 @@
 
   <button class="start-btn" id="startBtn" onclick="window.location.href='menu.html'">Start</button>
 
+  <!-- Language switcher -->
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="en"><img src="en.png" alt="EN">English</button>
+    <button class="lang-btn" data-lang="ru"><img src="rus.png" alt="RU">Русский</button>
+  </div>
+
 <script>
-  const i18n = {
-    en: {
-      account: 'Account:',
-      status: 'Account status:',
-      update: 'Last update:',
-      state: 'App state:',
-      start: 'Start',
-      activated: 'Activated',
-      notActivated: 'Not activated'
-    },
-    ru: {
-      account: 'Аккаунт:',
-      status: 'Статус аккаунта:',
-      update: 'Последнее обновление:',
-      state: 'Состояние программы:',
-      start: 'Начать работу',
-      activated: 'Активирован',
-      notActivated: 'Не активирован'
-    }
-  };
+  /* i18n logic here */
+  const i18n = {en:{account:'Account:',status:'Account status:',update:'Last update:',state:'App state:',start:'Start',activated:'Activated',notActivated:'Not activated'},ru:{account:'Аккаунт:',status:'Статус аккаунта:',update:'Последнее обновление:',state:'Состояние программы:',start:'Начать работу',activated:'Активирован',notActivated:'Не активирован'}};
   let lang = localStorage.getItem('lang') || 'en';
-  const switchBtns = document.querySelectorAll('.lang-btn');
-  const labelAccount = document.getElementById('labelAccount');
-  const labelStatus = document.getElementById('labelStatus');
-  const labelUpdate = document.getElementById('labelUpdate');
-  const labelState = document.getElementById('labelState');
-  const startBtn = document.getElementById('startBtn');
-  const statEl = document.getElementById('accStatus');
-  const infoBtn = document.getElementById('infoBtn');
-
-  function applyLang() {
-    const t = i18n[lang];
-    labelAccount.textContent = t.account;
-    labelStatus.textContent = t.status;
-    labelUpdate.textContent = t.update;
-    labelState.textContent = t.state;
-    startBtn.textContent = t.start;
-    // update status text
-    if (statEl.dataset.active === 'true') {
-      statEl.textContent = t.activated;
-    } else {
-      statEl.textContent = t.notActivated;
-    }
-    localStorage.setItem('lang', lang);
-  }
-  switchBtns.forEach(btn => btn.addEventListener('click', () => {
-    lang = btn.getAttribute('data-lang');
-    applyLang();
-  }));
-
-  // initialize content
-  const uidEl = document.getElementById('uid');
-  const updEl = document.getElementById('upd');
-  const userId = localStorage.getItem('userId') || '—';
-  uidEl.textContent = userId;
-  const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1);
-  updEl.textContent = yesterday.toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-GB');
-
-  function setInactive() {
-    statEl.className = 'status-inactive';
-    statEl.dataset.active = 'false';
-    infoBtn.style.display = 'inline-block';
-  }
-  function setActive() {
-    statEl.className = 'status-active';
-    statEl.dataset.active = 'true';
-    infoBtn.style.display = 'none';
-  }
-
-  if (userId !== '—') {
-    fetch('https://postback-server-boba.onrender.com/data')
-      .then(r => r.json())
-      .then(data => {
-        const u = data.find(e => e.user_id === userId);
-        if (u && u.amount >= 3) setActive(); else setInactive();
-        applyLang();
-      })
-      .catch(() => { setInactive(); applyLang(); });
-  } else { setInactive(); applyLang(); }
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>{lang=btn.dataset.lang;applyLang();}));
+  const lblAcc=document.getElementById('labelAccount'),lblStat=document.getElementById('labelStatus'),lblUpd=document.getElementById('labelUpdate'),lblState=document.getElementById('labelState'),btnStart=document.getElementById('startBtn'),statEl=document.getElementById('accStatus'),infoBtn=document.getElementById('infoBtn');
+  function applyLang(){const t=i18n[lang];lblAcc.textContent=t.account;lblStat.textContent=t.status;lblUpd.textContent=t.update;lblState.textContent=t.state;btnStart.textContent=t.start;if(statEl.dataset.active==='true')statEl.textContent=t.activated;else statEl.textContent=t.notActivated;localStorage.setItem('lang',lang);}  
+  // Initialize content
+  const uid=document.getElementById('uid');const upd=document.getElementById('upd');const userId=localStorage.getItem('userId')||'—';uid.textContent=userId;const y=new Date();y.setDate(y.getDate()-1);upd.textContent=y.toLocaleDateString(lang==='ru'?'ru-RU':'en-GB');
+  function setInactive(){statEl.dataset.active='false';statEl.className='status-inactive';infoBtn.style.display='inline-block';}
+  function setActive(){statEl.dataset.active='true';statEl.className='status-active';infoBtn.style.display='none';}
+  if(userId!=='—'){fetch('https://postback-server-boba.onrender.com/data').then(r=>r.json()).then(data=>{const u=data.find(e=>e.user_id===userId);u&&u.amount>=3?setActive():setInactive();applyLang();}).catch(()=>{setInactive();applyLang();});}else{setInactive();applyLang();}
 </script>
 </body>
 </html>

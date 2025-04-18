@@ -2,60 +2,221 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RED SOFT AI • Account Not Activated</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RED SOFT AI • Account Not Activated</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@600&display=swap" rel="stylesheet"/>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--accent1:#00e3ff;--accent2:#7d4dff;--bg1:#08111d;--bg2:#101e34}
-    body{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;font-family:'Inter',sans-serif;color:#fff;background:linear-gradient(120deg,var(--bg1),var(--bg2));background-size:400% 400%;animation:bgShift 30s ease-in-out infinite;overflow:hidden;padding-top:32px;text-align:center;position:relative}
-    @keyframes bgShift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    body::before, body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
-    body::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400' fill='none' stroke='%2300e3ff33' stroke-width='1'%3E%3Cg stroke-linecap='round'%3E%3Ccircle cx='200' cy='200' r='198'/%3E%3Ccircle cx='200' cy='200' r='132'/%3E%3Ccircle cx='200' cy='200' r='66'/%3E%3Cpolyline points='200,2 266,68 332,134 398,200 332,266 266,332 200,398 134,332 68,266 2,200 68,134 134,68 200,2'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;opacity:.06;transform:scale(1.15)}
-    body::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay}
-    .lang-switch{display:flex;gap:12px;position:absolute;top:16px;right:16px;z-index:1}
-    .lang-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,0.1);border:none;border-radius:20px;color:#fff;cursor:pointer;font-size:.9rem}
-    .lang-btn img{width:20px;height:20px;border-radius:50%}
-    .app-header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
-    .app-header img{width:48px;height:48px;border-radius:12px}
-    .app-header h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,5vw,2rem);letter-spacing:.8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .container{position:relative;width:92%;max-width:460px;padding:32px 24px;background:rgba(8,17,29,.82);backdrop-filter:blur(14px);border-radius:24px;margin:0 auto}
-    .container::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;z-index:-1;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(4px)}
-    h2{font-family:'Orbitron',sans-serif;font-size:1.5rem;margin-bottom:20px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    p{font-size:1.1rem;line-height:1.6;margin-bottom:24px;color:#ddd}
-    button{padding:14px 32px;width:100%;font-size:1rem;font-weight:600;color:#fff;border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 4px 18px rgba(0,227,255,.22);transition:transform .22s}
-    button:hover{transform:translateY(-3px)}
-    @media(max-width:500px){.app-header img{width:42px;height:42px}}    
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    :root {
+      --accent1: #00e3ff;
+      --accent2: #7d4dff;
+      --bg1: #08111d;
+      --bg2: #101e34;
+    }
+
+    body {
+      min-height:100dvh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      font-family:'Inter',sans-serif;
+      color:#fff;
+      background:linear-gradient(120deg,var(--bg1),var(--bg2));
+      background-size:400% 400%;
+      animation:bgShift 30s ease-in-out infinite;
+      overflow:hidden;
+      padding-top:32px;
+      text-align:center;
+    }
+    @keyframes bgShift {
+      0%{background-position:0 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0 50%}
+    }
+    body::before, body::after {
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+    }
+    body::before {
+      background-image:url("data:image/svg+xml,...");
+      background-size:cover;
+      opacity:.06;
+      transform:scale(1.15);
+    }
+    body::after {
+      background:url("data:image/svg+xml,...");
+      opacity:.04;
+      mix-blend-mode:overlay;
+    }
+
+    .app-header {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .app-header img {
+      width:48px;
+      height:48px;
+      border-radius:12px;
+    }
+    .app-header h1 {
+      font-family:'Orbitron',sans-serif;
+      font-size:clamp(1.6rem,5vw,2rem);
+      letter-spacing:.8px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .container {
+      position:relative;
+      width:92%;
+      max-width:460px;
+      padding:32px 24px;
+      background:rgba(8,17,29,.82);
+      backdrop-filter:blur(14px);
+      border-radius:24px;
+      margin-bottom:24px;
+    }
+    .container::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      padding:2px;
+      border-radius:inherit;
+      z-index:-1;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      filter:blur(4px);
+    }
+
+    h2 {
+      font-family:'Orbitron',sans-serif;
+      font-size:1.5rem;
+      margin-bottom:20px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    p {
+      font-size:1.1rem;
+      line-height:1.6;
+      margin-bottom:24px;
+      color:#ddd;
+    }
+    button {
+      padding:14px 32px;
+      width:100%;
+      font-size:1rem;
+      font-weight:600;
+      color:#fff;
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      box-shadow:0 4px 18px rgba(0,227,255,.22);
+      transition:transform .22s;
+    }
+    button:hover {
+      transform:translateY(-3px);
+    }
+
+    /* переключатель языка теперь под контейнером */
+    .lang-switch {
+      display:flex;
+      gap:12px;
+      margin-bottom:32px;
+    }
+    .lang-switch .lang-btn {
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      background:rgba(255,255,255,0.1);
+      border:none;
+      border-radius:20px;
+      color:#fff;
+      cursor:pointer;
+      font-size:.9rem;
+    }
+    .lang-btn img {
+      width:20px;
+      height:20px;
+      border-radius:50%;
+    }
+
+    @media(max-width:500px){
+      .app-header img { width:42px; height:42px }
+    }
   </style>
 </head>
 <body>
-  <div class="lang-switch">
-    <button class="lang-btn" data-lang="en"><img src="en.png" alt="EN">English</button>
-    <button class="lang-btn" data-lang="ru"><img src="rus.png" alt="RU">Русский</button>
-  </div>
+
   <header class="app-header">
-    <img src="logo_ai.png" alt="logo">
-    <h1>RED SOFT AI</h1>
+    <img src="logo_ai.png" alt="logo"/>
+    <h1>RED SOFT AI</h1>
   </header>
+
   <div class="container">
     <h2 id="title">Account not activated</h2>
     <p id="desc">To receive signals, please top up your account balance.</p>
     <button id="backBtn">Back</button>
   </div>
+
+  <!-- здесь теперь переключатель языка -->
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="en">
+      <img src="en.png" alt="EN"/>English
+    </button>
+    <button class="lang-btn" data-lang="ru">
+      <img src="rus.png" alt="RU"/>Русский
+    </button>
+  </div>
+
   <script>
     const i18n = {
-      en: {title:'Account not activated',desc:'To receive signals, please top up your account balance.',back:'Back'},
-      ru: {title:'Аккаунт не активирован',desc:'Чтобы получать сигналы, пополните баланс аккаунта.',back:'Назад'}
+      en: {
+        title: 'Account not activated',
+        desc: 'To receive signals, please top up your account balance.',
+        back: 'Back'
+      },
+      ru: {
+        title: 'Аккаунт не активирован',
+        desc: 'Чтобы получать сигналы, пополните баланс аккаунта.',
+        back: 'Назад'
+      }
     };
-    let lang = localStorage.getItem('lang')||'en';
-    const switchBtns = document.querySelectorAll('.lang-btn');
+    let lang = localStorage.getItem('lang') || 'en';
     const titleEl = document.getElementById('title');
     const descEl = document.getElementById('desc');
     const backBtn = document.getElementById('backBtn');
-    function applyLang(){const t=i18n[lang];titleEl.textContent=t.title;descEl.textContent=t.desc;backBtn.textContent=t.back;localStorage.setItem('lang',lang);}    
-    switchBtns.forEach(btn=>btn.addEventListener('click',()=>{lang=btn.dataset.lang;applyLang();}));
+
+    function applyLang() {
+      const t = i18n[lang];
+      titleEl.textContent = t.title;
+      descEl.textContent  = t.desc;
+      backBtn.textContent = t.back;
+      localStorage.setItem('lang', lang);
+    }
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        lang = btn.dataset.lang;
+        applyLang();
+      });
+    });
     applyLang();
-    backBtn.addEventListener('click',()=>location.href='acc.html');
+
+    backBtn.addEventListener('click', () => {
+      window.location.href = 'acc.html';
+    });
   </script>
+
 </body>
 </html>

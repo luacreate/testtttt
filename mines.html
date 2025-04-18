@@ -31,169 +31,54 @@
       animation:bgShift 30s ease-in-out infinite;
       overflow:hidden;
       padding-top:32px;
-    }
-    @keyframes bgShift{
-      0%{background-position:0 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0 50%}
-    }
-    body::before,
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-2;
-    }
-    body::before{
-      background-image:url("data:image/svg+xml,...");
-      background-size:cover;
-      opacity:.06;
-      transform:scale(1.15);
-    }
-    body::after{
-      background:url("data:image/svg+xml,...");
-      opacity:.04;
-      mix-blend-mode:overlay;
-    }
-
-    .app-header{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:28px;
-    }
-    .app-header img{
-      width:48px;
-      height:48px;
-      border-radius:12px;
-      object-fit:cover;
-    }
-    .app-header h1{
-      font-family:'Orbitron',sans-serif;
-      font-size:clamp(1.6rem,5vw,2rem);
-      letter-spacing:.8px;
-      background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .container{
       position:relative;
-      width:92%;
-      max-width:460px;
-      padding:32px 24px 0;
-      background:rgba(8,17,29,.82);
-      backdrop-filter:blur(14px);
-      border-radius:24px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
     }
-    .container::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      padding:2px;
-      border-radius:inherit;
-      z-index:-1;
-      background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      filter:blur(4px);
-    }
+    @keyframes bgShift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+    body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2}
+    body::before{background-image:url("data:image/svg+xml,...");background-size:cover;opacity:.06;transform:scale(1.15)}
+    body::after{background:url("data:image/svg+xml,...");opacity:.04;mix-blend-mode:overlay}
 
-    #loadingIndicator{
-      display:none;
-      margin-bottom:16px;
-    }
-    #loadingIndicator span{
-      display:inline-block;
-      width:10px;
-      height:10px;
-      margin:0 4px;
-      background:var(--accent3);
-      border-radius:50%;
-      animation:blink 1s infinite;
-    }
-    #loadingIndicator span:nth-child(2){animation-delay:0.2s;}
-    #loadingIndicator span:nth-child(3){animation-delay:0.4s;}
-    @keyframes blink{0%,80%,100%{opacity:0.2;}40%{opacity:1;}}
+    /* LANGUAGE SWITCHER */
+    .lang-switch{display:flex;gap:12px;position:absolute;top:16px;right:16px;z-index:1}
+    .lang-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,0.1);border:none;border-radius:20px;color:#fff;cursor:pointer;font-size:.9rem}
+    .lang-btn img{width:20px;height:20px;border-radius:50%}
 
-    .grid{
-      width:100%;
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:var(--gap);
-      margin-bottom:24px;
-      position:relative;
-      padding:0 var(--gap);
-    }
-    .square{
-      width:100%;
-      aspect-ratio:1;
-      border-radius:12px;
-      background:linear-gradient(145deg,#1DA1F2 0%,#0b6ab1 100%);
-      box-shadow:inset 0 1px 3px rgba(255,255,255,.15),0 4px 6px rgba(0,0,0,.25);
-      transition:opacity .4s,transform .25s cubic-bezier(.25,.46,.45,.94);
-    }
-    .square:hover{transform:translateY(-2px) scale(1.04);}
-    .square:active{transform:translateY(0) scale(.96);}
-    .star{
-      position:absolute;
-      width:calc((100% - 4 * var(--gap))/5 - 10px);
-      aspect-ratio:1;
-      border-radius:10px;
-      background:url('star.png') center/cover;
-      opacity:0;
-      transition:opacity .5s;
-    }
+    .app-header{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+    .app-header img{width:48px;height:48px;border-radius:12px;object-fit:cover}
+    .app-header h1{font-family:'Orbitron',sans-serif;font-size:clamp(1.6rem,5vw,2rem);letter-spacing:.8px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 
-    .button-container{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-      width:92%;
-      max-width:460px;
-      margin:16px auto;
-    }
-    .button-container button{
-      padding:14px 32px;
-      font-size:1rem;
-      font-weight:600;
-      color:#fff;
-      border:none;
-      border-radius:999px;
-      cursor:pointer;
-      background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      box-shadow:0 4px 18px rgba(0,227,255,.22);
-      transition:transform .22s;
-      width:100%;
-    }
-    .button-container button:hover{transform:translateY(-3px);}
-    #connectingMessage{
-      font-size:1.1rem;
-      color:var(--accent3);
-      margin-top:8px;
-      text-align:center;
-      display:none;
-    }
+    .container{position:relative;width:92%;max-width:460px;padding:32px 24px 0;background:rgba(8,17,29,.82);backdrop-filter:blur(14px);border-radius:24px;display:flex;flex-direction:column;align-items:center;margin:0 auto}
+    .container::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;z-index:-1;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(4px)}
 
-    @media(max-width:500px){
-      .button-container button{font-size:.95rem;padding:12px 24px;}
-      .app-header img{width:42px;height:42px;}
-    }
-    @media(max-width:360px){
-      .button-container button{font-size:.9rem;padding:10px 20px;}
-      .app-header img{width:36px;height:36px;}
-    }
+    #loadingIndicator{display:none;margin-bottom:16px}
+    #loadingIndicator span{display:inline-block;width:10px;height:10px;margin:0 4px;background:var(--accent3);border-radius:50%;animation:blink 1s infinite}
+    #loadingIndicator span:nth-child(2){animation-delay:0.2s}
+    #loadingIndicator span:nth-child(3){animation-delay:0.4s}
+    @keyframes blink{0%,80%,100%{opacity:0.2}40%{opacity:1}}
+
+    .grid{width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);margin-bottom:24px;position:relative;padding:0 var(--gap)}
+    .square{width:100%;aspect-ratio:1;border-radius:12px;background:linear-gradient(145deg,#1DA1F2 0%,#0b6ab1 100%);box-shadow:inset 0 1px 3px rgba(255,255,255,.15),0 4px 6px rgba(0,0,0,.25);transition:opacity .4s,transform .25s cubic-bezier(.25,.46,.45,.94)}
+    .square:hover{transform:translateY(-2px) scale(1.04)}
+    .square:active{transform:translateY(0) scale(.96)}
+    .star{position:absolute;width:calc((100% - 4 * var(--gap))/5 - 10px);aspect-ratio:1;border-radius:10px;background:url('star.png') center/cover;opacity:0;transition:opacity .5s}
+
+    .button-container{display:flex;flex-direction:column;gap:16px;width:92%;max-width:460px;margin:16px auto}
+    .button-container button{padding:14px 32px;font-size:1rem;font-weight:600;color:#fff;border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 4px 18px rgba(0,227,255,.22);transition:transform .22s;width:100%}
+    .button-container button:hover{transform:translateY(-3px)}
+    #connectingMessage{font-size:1.1rem;color:var(--accent3);margin-top:8px;text-align:center;display:none}
+
+    @media(max-width:500px){.button-container button{font-size:.95rem;padding:12px 24px} .app-header img{width:42px;height:42px}}  
+    @media(max-width:360px){.button-container button{font-size:.9rem;padding:10px 20px} .app-header img{width:36px;height:36px}}  
   </style>
 </head>
 <body>
+  <div class="lang-switch">
+    <button class="lang-btn" data-lang="en"><img src="en.png" alt="EN">English</button>
+    <button class="lang-btn" data-lang="ru"><img src="rus.png" alt="RU">Русский</button>
+  </div>
   <header class="app-header">
     <img src="logo_ai.png" alt="AI logo">
-    <h1>RED SOFT AI</h1>
+    <h1 id="title">Mines</h1>
   </header>
 
   <div class="container">
@@ -202,71 +87,29 @@
   </div>
 
   <div class="button-container">
-    <button id="signalButton">Получить сигнал</button>
-    <button onclick="window.location.href='menu.html'">Вернуться в меню</button>
+    <button id="signalButton">Get signal</button>
+    <button id="menuButton">Back to menu</button>
     <p id="connectingMessage">Connecting to server…</p>
   </div>
 
 <script>
-const grid=document.getElementById('grid');
-const squares=[];
-let currentStars=[];
-let isShowingSignal=false;
-const loadingIndicator=document.getElementById('loadingIndicator');
-for(let i=0;i<25;i++){
-  const d=document.createElement('div');
-  d.className='square';
-  grid.appendChild(d);
-  squares.push(d);
-}
+  const i18n={
+    en:{title:'Mines',get:'Get signal',back:'Back to menu',connecting:'Connecting to server…'},
+    ru:{title:'Mines',get:'Получить сигнал',back:'Вернуться в меню',connecting:'Подключение к серверу…'}
+  };
+  let lang=localStorage.getItem('lang')||'en';
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>{lang=btn.dataset.lang;applyLang();}));
+  function applyLang(){const t=i18n[lang];document.getElementById('title').textContent=t.title;document.getElementById('signalButton').textContent=t.get;document.getElementById('menuButton').textContent=t.back;document.getElementById('connectingMessage').textContent=t.connecting;localStorage.setItem('lang',lang);}applyLang();
+  document.getElementById('menuButton').addEventListener('click',()=>window.location.href='menu.html');
 
-document.getElementById('signalButton').addEventListener('click',checkDepositAndShowStars);
-async function checkDepositAndShowStars(){
-  const userId=localStorage.getItem('userId');
-  if(!userId){alert('Error: user ID not found!');return;}
-  try{
-    const res=await fetch('https://postback-server-boba.onrender.com/data');
-    const data=await res.json();
-    const user=data.find(e=>e.user_id===userId);
-    if(user){
-      if(user.amount>=1) showStars();
-      else showConnectingMessage();
-    } else {
-      alert('Account not found!');
-    }
-  } catch(err){
-    console.error('Server error:',err);
-    alert('Server error. Please try again later.');
-  }
-}
-
-function showConnectingMessage(){
-  document.getElementById('connectingMessage').style.display='block';
-  setTimeout(()=>window.location.href='error.html',4000);
-}
-
-async function showStars(){
-  if(isShowingSignal) return;
-  isShowingSignal=true;
-  loadingIndicator.style.display='block';
-  currentStars.forEach(s=>s.remove());
-  currentStars=[];
-  squares.forEach(s=>s.style.opacity='1');
-  const indices=Array.from({length:18},()=>Math.floor(Math.random()*25));
-  for(const idx of indices){
-    squares[idx].style.opacity='0';
-    await new Promise(r=>setTimeout(r,400));
-    const star=document.createElement('div');
-    star.className='star';
-    star.style.left=`${squares[idx].offsetLeft}px`;
-    star.style.top=`${squares[idx].offsetTop}px`;
-    star.style.opacity='1';
-    grid.appendChild(star);
-    currentStars.push(star);
-  }
-  loadingIndicator.style.display='none';
-  isShowingSignal=false;
-}
+  const grid=document.getElementById('grid');
+  const squares=[];let currentStars=[];let isShowingSignal=false;
+  const loadingIndicator=document.getElementById('loadingIndicator');
+  for(let i=0;i<25;i++){const d=document.createElement('div');d.className='square';grid.appendChild(d);squares.push(d)}
+  document.getElementById('signalButton').addEventListener('click',checkDepositAndShowStars);
+  async function checkDepositAndShowStars(){const userId=localStorage.getItem('userId');if(!userId){alert(lang==='ru'?'Ошибка: ID пользователя не найден!':'Error: user ID not found!');return;}try{const res=await fetch('https://postback-server-boba.onrender.com/data');const data=await res.json();const u=data.find(e=>e.user_id===userId);if(u){u.amount>=1?showStars():showConnectMsg()}else alert(lang==='ru'? 'Аккаунт не найден!' : 'Account not found!')}catch(err){console.error(err);alert(lang==='ru'? 'Ошибка сервера.' : 'Server error.')} }
+  function showConnectMsg(){document.getElementById('connectingMessage').style.display='block';setTimeout(()=>window.location.href='error.html',4000)}
+  async function showStars(){if(isShowingSignal)return;isShowingSignal=true;loadingIndicator.style.display='block';currentStars.forEach(s=>s.remove());currentStars=[];squares.forEach(s=>s.style.opacity='1');const indices=Array.from({length:18},()=>Math.floor(Math.random()*25));for(const i of indices){squares[i].style.opacity='0';await new Promise(r=>setTimeout(r,400));const star=document.createElement('div');star.className='star';star.style.left=`${squares[i].offsetLeft}px`;star.style.top=`${squares[i].offsetTop}px`;star.style.opacity='1';grid.appendChild(star);currentStars.push(star);}loadingIndicator.style.display='none';isShowingSignal=false;}
 </script>
 </body>
 </html>

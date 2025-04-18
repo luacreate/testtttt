@@ -20,10 +20,14 @@
     .card{position:relative;width:92%;max-width:460px;padding:32px 24px;background:rgba(8,17,29,.82);backdrop-filter:blur(14px);border-radius:24px;text-align:left}
     .card::before{content:"";position:absolute;inset:0;padding:2px;border-radius:inherit;z-index:-1;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(4px)}
 
-    .info-row{display:flex;justify-content:space-between;margin-bottom:16px;font-size:1.05rem}
+    .info-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;font-size:1.05rem}
     .info-row span:first-child{opacity:.8}
     .status-active{color:var(--accent3)}
     .status-inactive{color:#ff6161}
+
+    /* small info button */
+    .info-btn{margin-left:8px;padding:2px 6px;font-size:.75rem;font-weight:600;border:none;border-radius:6px;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:none}
+    .info-btn:hover{opacity:.85}
 
     .start-btn{display:block;margin:28px auto 0;padding:14px 32px;font-size:1rem;font-weight:600;color:#fff;border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 4px 18px rgba(0,227,255,.22);transition:transform .22s;width:92%;max-width:460px}
     .start-btn:hover{transform:translateY(-3px)}
@@ -37,7 +41,10 @@
 
   <div class="card">
     <div class="info-row"><span>Аккаунт:</span><span id="uid">—</span></div>
-    <div class="info-row"><span>Статус аккаунта:</span><span id="accStatus" class="status-inactive">—</span></div>
+    <div class="info-row"><span>Статус аккаунта:</span>
+      <span id="accStatus" class="status-inactive">—</span>
+      <button class="info-btn" id="infoBtn" onclick="window.location.href='error.html'">info</button>
+    </div>
     <div class="info-row"><span>Последнее обновление:</span><span id="upd">—</span></div>
     <div class="info-row"><span>Состояние программы:</span><span style="color:var(--accent3)">Работает</span></div>
   </div>
@@ -47,18 +54,26 @@
 const uidEl=document.getElementById('uid');
 const statEl=document.getElementById('accStatus');
 const updEl=document.getElementById('upd');
+const infoBtn=document.getElementById('infoBtn');
 
 const userId=localStorage.getItem('userId')||'—';
 uidEl.textContent=userId;
 const yesterday=new Date();yesterday.setDate(yesterday.getDate()-1);
 updEl.textContent=yesterday.toLocaleDateString('ru-RU');
 
+function setInactive(){statEl.textContent='Не активирован';statEl.className='status-inactive';infoBtn.style.display='inline-block';}
+function setActive(){statEl.textContent='Активирован';statEl.className='status-active';infoBtn.style.display='none';}
+
 if(userId!=='—'){
  fetch('https://postback-server-boba.onrender.com/data')
   .then(r=>r.json())
-  .then(data=>{const u=data.find(e=>e.user_id===userId);if(u&&u.amount>=3){statEl.textContent='Активирован';statEl.className='status-active'}else{statEl.textContent='Не активирован';statEl.className='status-inactive'}})
-  .catch(()=>{statEl.textContent='Неизвестно';statEl.className='status-inactive'});
-}
+  .then(data=>{
+     const u=data.find(e=>e.user_id===userId);
+     if(u&&u.amount>=3){setActive();}
+     else{setInactive();}
+  })
+  .catch(()=>{setInactive();});
+}else{setInactive();}
 </script>
 </body>
 </html>

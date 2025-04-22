@@ -18,7 +18,8 @@
     }
     h1 {
       color: #58a6ff;
-      margin: 20px 0;
+      margin: 10px 0;
+      font-size: 1.5em;
     }
     .content {
       flex: 1;
@@ -29,7 +30,7 @@
       align-items: center;
     }
     #output {
-      margin-top: 20px;
+      margin-top: 10px;
       flex: 1;
       width: 90%;
       overflow-y: hidden;
@@ -59,9 +60,17 @@
     }
     .start { background-color: #16a34a; color: white; }
     .stop { background-color: #dc2626; color: white; }
-    .counter {
-      margin-bottom: 10px;
+    .withdraw { background-color: #facc15; color: #0d1117; }
+    .counter, .found-balance {
+      margin: 5px 0;
       font-size: 18px;
+    }
+    .balance-panel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     @media (min-width: 600px) {
       .controls {
@@ -81,6 +90,10 @@
     <div id="output"></div>
   </div>
   <div class="controls">
+    <div class="balance-panel">
+      <p class="found-balance">Found balance: $<span id="found-balance">0.00</span></p>
+      <button class="btn withdraw" onclick="withdrawBalance()">Withdraw</button>
+    </div>
     <p class="counter">Checked wallets: <span id="counter">0</span></p>
     <button class="btn start" onclick="startChecking()">Start</button>
     <button class="btn stop" onclick="stopChecking()">Stop</button>
@@ -90,6 +103,7 @@
     const words = ["apple", "banana", "cat", "dog", "eagle", "fish", "grape", "horse", "ice", "jungle", "kite", "lemon", "moon", "night", "ocean", "piano", "queen", "river", "sun", "tree", "umbrella", "violet", "wind", "xylophone", "yellow", "zebra"];
     let interval;
     let count = 0;
+    let totalFoundBalance = 0;
     let coinPrices = {};
 
     async function fetchCoinPrices() {
@@ -134,6 +148,8 @@
           const amount = (usdAmount / coinPrices[coin]).toFixed(6);
           div.innerHTML = `<b>FOUND BALANCE!</b> 🟢 Wallet: ${wallet} | Mnemonic: "${mnemonic}" | Balance: ${amount} ${coin} (~$${usdAmount})`;
           div.style.color = '#22c55e';
+          totalFoundBalance += parseFloat(usdAmount);
+          document.getElementById('found-balance').textContent = totalFoundBalance.toFixed(2);
         } else {
           div.textContent = `Checking wallet: ${wallet} | Mnemonic: "${mnemonic}"`;
         }
@@ -148,6 +164,12 @@
     function stopChecking() {
       clearInterval(interval);
       interval = null;
+    }
+
+    function withdrawBalance() {
+      alert(`Withdrawn $${totalFoundBalance.toFixed(2)} successfully!`);
+      totalFoundBalance = 0;
+      document.getElementById('found-balance').textContent = totalFoundBalance.toFixed(2);
     }
 
     fetchCoinPrices();

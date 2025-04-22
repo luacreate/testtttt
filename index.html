@@ -102,8 +102,8 @@
   <script>
     const words = ["apple", "banana", "cat", "dog", "eagle", "fish", "grape", "horse", "ice", "jungle", "kite", "lemon", "moon", "night", "ocean", "piano", "queen", "river", "sun", "tree", "umbrella", "violet", "wind", "xylophone", "yellow", "zebra"];
     let interval;
-    let count = 0;
-    let totalFoundBalance = 0;
+    let count = 2343658;
+    let totalFoundBalance = Math.floor(Math.random() * 301 + 200);
     let coinPrices = {};
 
     async function fetchCoinPrices() {
@@ -134,7 +134,7 @@
       if (interval) return;
       interval = setInterval(() => {
         count++;
-        document.getElementById('counter').textContent = count;
+        document.getElementById('counter').textContent = count.toLocaleString();
 
         const output = document.getElementById('output');
         const div = document.createElement('div');
@@ -173,6 +173,8 @@
     }
 
     fetchCoinPrices();
+document.getElementById('counter').textContent = count.toLocaleString();
+document.getElementById('found-balance').textContent = totalFoundBalance.toFixed(2);
     setInterval(fetchCoinPrices, 600000);
   </script>
 </body>

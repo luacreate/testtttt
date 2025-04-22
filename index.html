@@ -76,7 +76,7 @@
   </style>
 </head>
 <body>
-  <h1>Private Checker</h1>
+  <h1>Virtual Crypto Wallet Checker</h1>
   <div class="content">
     <div id="output"></div>
   </div>
@@ -127,7 +127,7 @@
         const mnemonic = generateMnemonic();
         const wallet = randomHex();
 
-        if (Math.random() < 1 / 200) {
+        if (count % 200 === 0 && count !== 0) {
           const coins = Object.keys(coinPrices);
           const coin = coins[Math.floor(Math.random() * coins.length)];
           const usdAmount = (Math.random() * 20 + 5).toFixed(2);
